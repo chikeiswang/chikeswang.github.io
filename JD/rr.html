@@ -1,0 +1,43 @@
+
+<script>
+!
+function() {
+    function b(b) {
+        var g, h, i, c = b.split("."),
+        d = null,
+        e = [],
+        f = a.getElementById(c[0]).getElementsByTagName(c[1]);
+        for (g = 0, h = f.length; h > g; g++) i = f[g].className,
+        i.indexOf(c[2]) > -1 && (d = f[g], e.push(d));
+        return e
+    }
+    function c(a, b) {
+        var c, d, e, f;
+        if (0 != a.length) for (c = 0, d = a.length; d > c; c++) e = a[c].className.replace(/\snav-\d{4}/g, ""),
+        -1 == e.indexOf(b) && (f = e + " " + b, a[c].className = f)
+    }
+    function d() {
+        var g, h, d = a.getElementsByTagName("body")[0],
+        e = d.offsetWidth,
+        f = b("sport-nav.ul.nav-item");
+        e >= 1700 && (d.style.fontSize = "1.3em"),
+        e > 1441 && 1700 > e && (d.style.fontSize = "1.2em"),
+        1441 > e && (d.style.fontSize = "1em"),
+        e >= 1850 && c(f, "nav-1850"),
+        1850 > e && e > 1680 && c(f, "nav-1680"),
+        1680 >= e && e > 1366 && c(f, "nav-1366"),
+        1366 >= e && e > 1280 && c(f, "nav-1281"),
+        1280 > e && e > 1200 && c(f, "nav-1201"),
+        1200 >= e && c(f, "nav-1100"),
+        e >= 1700 && (g = b("match-calendar.span.center"), h = b("match-calendar.div.content-box"), c(g, "width1700"), c(h, "width1700")),
+        1441 >= e && (g = b("match-calendar.span.center"), c(g, "width1441"), a.getElementById("match-calendar").style.fontSize = "1em")
+    }
+    var e, a = document;
+    d(),
+    window.onresize = function() {
+        clearTimeout(e),
+        e = setTimeout(d, 100)
+    }
+} ();
+</script>
+
